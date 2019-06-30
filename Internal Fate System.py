@@ -143,7 +143,7 @@ Hard = 16
 
 
 def wheel_of_fate():
-    spin = randint(1,5)
+    spin = randint(1, 5)
     print(spin)
     return spin
 
@@ -277,7 +277,7 @@ def get_enhance(pc):
 
 
 def get_enlight(pc):
-    enlight = int(pc.charimsa)
+    enlight = int(pc.charisma)
     enlightenments = int(enlight / 10)
     return enlightenments
 
@@ -418,9 +418,6 @@ utility = get_utility
 
 
 def skill_challenge(pc, skill, diff):
-    # skill_name = "None"
-    # skill_modifier = 0
-
     if diff == 8:
         difficulty = "Easy"
         print("Difficulty: Easy")
@@ -432,6 +429,10 @@ def skill_challenge(pc, skill, diff):
     elif diff == 16:
         difficulty = "Hard"
         print("Difficulty: Hard")
+
+    else:
+        difficulty = "Standard"
+        print("Difficulty defaulted to Standard.")
 
     luck_mod = get_luckmod(pc)
     print("Luck modifier:", luck_mod)
@@ -932,6 +933,8 @@ def expand_page():
             skill = security
         elif skill == "Sense Motive":
             skill = sense_motive
+        elif skill == "Sleight of Hand":
+            skill = sleight_of_hand
         elif skill == "Stealth":
             skill = stealth
         elif skill == "Survival":
@@ -987,28 +990,30 @@ def expand_page():
     card_frame.grid(row=4, columnspan=3)
 
     skill_chall_label = Label(card_frame, text="Skill Challenge")
-    skill_chall_label.grid(row=3, columnspan=3, pady=3)
+    skill_chall_label.grid(row=3, columnspan=3, pady=2)
 
     photo = PhotoImage(file="RavenStealthSuccess2.gif")
 
-    skill_chall_card = Label(card_frame, image=photo, width=200, height=285)
+    skill_chall_card = Label(card_frame, image=photo, width=240, height=300)
     skill_chall_card.photo = photo
     skill_chall_card.grid(row=4)
 
-    roll_result = Entry(card_frame, width=32, state="readonly", textvariable=rvariable)
-    roll_result.grid(row=5)
+    roll_result = Entry(card_frame, width=37, state="readonly", textvariable=rvariable)
+    roll_result.grid(row=5, pady=5)
 
     roll_die = Button(card_frame, text="Roll the die!", command=roll_the_die)
-    roll_die.grid(row=6, columnspan=3, sticky='n', pady=3)
+    roll_die.grid(row=6, columnspan=3, sticky='n', pady=4)
 
 
 second_frame = Frame(skill_frame)
 second_frame.grid()
 
-skill_challenge_button = Radiobutton(second_frame, text="Skill Challenge", value=1, variable=challenge_var, command=expand_page)
+skill_challenge_button = Radiobutton(second_frame, text="Skill Challenge", value=1, variable=challenge_var,
+                                     command=expand_page)
+
 skill_challenge_button.grid(row=1, column=0)
 
-dps_challenge_button = Radiobutton(second_frame, text="Damage Challenge", value=2, variable=challenge_var)
+dps_challenge_button = Radiobutton(second_frame, text="Combat Challenge", value=2, variable=challenge_var)
 dps_challenge_button.grid(row=1, column=1)
 
 heal_challenge_button = Radiobutton(second_frame, text="Heal Challenge", value=3, variable=challenge_var)
