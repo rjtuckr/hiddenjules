@@ -886,8 +886,60 @@ def expand_page():
 
     def get_skill():
         skill = svariable.get()
-        if skill == "Acrobatic":
+        if skill == "Acrobatics":
             skill = acrobatic
+        elif skill == "Athletics":
+            skill = athletic
+        elif skill == "Block":
+            skill = block
+        elif skill == "Chemistry":
+            skill = chemistry
+        elif skill == "Control":
+            skill = control
+        elif skill == "Craft":
+            skill = craft
+        elif skill == "Destruction":
+            skill = destruction
+        elif skill == "Disguise":
+            skill = disguise
+        elif skill == "Engineering":
+            skill = engineer
+        elif skill == "Enhancement":
+            skill = enhancement
+        elif skill == "Enlightenment":
+            skill = enlightenment
+        elif skill == "Escape":
+            skill = escape
+        elif skill == "Heavy Armor":
+            skill = heavy_armor
+        elif skill == "Interaction":
+            skill = interaction
+        elif skill == "Knowledge":
+            skill = knowledge
+        elif skill == "Light Armor":
+            skill = light_armor
+        elif skill == "Medicine":
+            skill = medicine
+        elif skill == "Melee":
+            skill = melee
+        elif skill == "Perception":
+            skill = perception
+        elif skill == "Ranged":
+            skill = ranged
+        elif skill == "Ride":
+            skill = ride
+        elif skill == "Security":
+            skill = security
+        elif skill == "Sense Motive":
+            skill = sense_motive
+        elif skill == "Stealth":
+            skill = stealth
+        elif skill == "Survival":
+            skill = survival
+        elif skill == "Unarmed":
+            skill = unarmed
+        else:
+            print("Skill not found.")
         return skill
 
     def get_diff():
@@ -900,6 +952,10 @@ def expand_page():
 
         elif diff == "Standard":
             diff = Standard
+
+        else:
+            print("Difficulty not found.")
+
         return diff
 
     def roll_the_die():
@@ -913,7 +969,12 @@ def expand_page():
 
     expand_frame.grid()
 
-    skill_dropdown = OptionMenu(expand_frame, svariable, "Acrobatic")
+    skill_dropdown = OptionMenu(expand_frame, svariable, "Acrobatics", "Athletics", "Block", "Chemistry", "Control",
+                                "Craft", "Destruction", "Disguise", "Engineering", "Enhancement", "Enlightenment",
+                                "Escape", "Heavy Armor", "Interaction", "Knowledge", "Light Armor", "Medicine", "Melee",
+                                "Perception", "Ranged", "Ride", "Security", "Sense Motive", "Sleight of Hand",
+                                "Stealth", "Survival", "Unarmed")
+
     skill_dropdown.grid(row=2, column=1)
 
     pc_dropdown = OptionMenu(expand_frame, cvariable, "Ho", "Kinzin", "Mignon", "Raven", "Sev")
@@ -934,7 +995,7 @@ def expand_page():
     skill_chall_card.photo = photo
     skill_chall_card.grid(row=4)
 
-    roll_result = Entry(card_frame, width=31, state="readonly", textvariable=rvariable)
+    roll_result = Entry(card_frame, width=32, state="readonly", textvariable=rvariable)
     roll_result.grid(row=5)
 
     roll_die = Button(card_frame, text="Roll the die!", command=roll_the_die)
@@ -952,5 +1013,6 @@ dps_challenge_button.grid(row=1, column=1)
 
 heal_challenge_button = Radiobutton(second_frame, text="Heal Challenge", value=3, variable=challenge_var)
 heal_challenge_button.grid(row=1, column=2)
+
 
 IFS_GUI.mainloop()
