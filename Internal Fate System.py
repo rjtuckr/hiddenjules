@@ -842,8 +842,14 @@ skill_frame.grid()
 
 Label(skill_frame, text="Internal Fate System").grid(row=0, pady=3, columnspan=3, sticky='n')
 
+expand_frame = Frame(skill_frame)
+
 
 def expand_page():
+
+    for widget in expand_frame.winfo_children():        # composes a list of all the widgets in the called frame
+        widget.destroy()
+
     svariable = StringVar()
     svariable.set("Select a Skill")  # sets the default value of the option menu
 
@@ -858,8 +864,24 @@ def expand_page():
 
     def get_pc():
         pc = cvariable.get()
-        if pc == "Raven":
+        if pc == "Ho":
+            pc = Ho
+
+        elif pc == "Kinzin":
+            pc = Kinzin
+
+        elif pc == "Mignon":
+            pc = Mignon
+
+        elif pc == "Raven":
             pc = Raven
+
+        elif pc == "Sev":
+            pc = Sev
+
+        else:
+            print("PC not found.")
+
         return pc
 
     def get_skill():
@@ -872,6 +894,12 @@ def expand_page():
         diff = dvariable.get()
         if diff == "Easy":
             diff = Easy
+
+        elif diff == "Hard":
+            diff = Hard
+
+        elif diff == "Standard":
+            diff = Standard
         return diff
 
     def roll_the_die():
@@ -883,16 +911,18 @@ def expand_page():
         rvariable.set(message)
         return result
 
-    skill_dropdown = OptionMenu(skill_frame, svariable, "Acrobatic")
+    expand_frame.grid()
+
+    skill_dropdown = OptionMenu(expand_frame, svariable, "Acrobatic")
     skill_dropdown.grid(row=2, column=1)
 
-    pc_dropdown = OptionMenu(skill_frame, cvariable, "Raven")
+    pc_dropdown = OptionMenu(expand_frame, cvariable, "Ho", "Kinzin", "Mignon", "Raven", "Sev")
     pc_dropdown.grid(row=2, column=0)
 
-    diff_dropdown = OptionMenu(skill_frame, dvariable, "Easy")
+    diff_dropdown = OptionMenu(expand_frame, dvariable, "Easy", "Standard", "Hard")
     diff_dropdown.grid(row=2, column=2)
 
-    card_frame = Frame(skill_frame)
+    card_frame = Frame(expand_frame)
     card_frame.grid(row=4, columnspan=3)
 
     skill_chall_label = Label(card_frame, text="Skill Challenge")
@@ -908,19 +938,19 @@ def expand_page():
     roll_result.grid(row=5)
 
     roll_die = Button(card_frame, text="Roll the die!", command=roll_the_die)
-    roll_die.grid(row=6,columnspan=3,sticky='n', pady=3)
+    roll_die.grid(row=6, columnspan=3, sticky='n', pady=3)
 
 
-skill_challenge_button = Radiobutton(skill_frame, text="Skill Challenge", value=1, variable=challenge_var, command=expand_page)
+second_frame = Frame(skill_frame)
+second_frame.grid()
+
+skill_challenge_button = Radiobutton(second_frame, text="Skill Challenge", value=1, variable=challenge_var, command=expand_page)
 skill_challenge_button.grid(row=1, column=0)
 
-dps_challenge_button = Radiobutton(skill_frame, text="Damage Challenge", value=2, variable=challenge_var)
+dps_challenge_button = Radiobutton(second_frame, text="Damage Challenge", value=2, variable=challenge_var)
 dps_challenge_button.grid(row=1, column=1)
 
-heal_challenge_button = Radiobutton(skill_frame, text="Heal Challenge", value=3, variable=challenge_var)
+heal_challenge_button = Radiobutton(second_frame, text="Heal Challenge", value=3, variable=challenge_var)
 heal_challenge_button.grid(row=1, column=2)
 
 IFS_GUI.mainloop()
-
-
-
