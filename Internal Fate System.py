@@ -831,6 +831,12 @@ def heal(healer, injured):
             return None
 
 
+# TGG MAINFRAME
+# Tkinter-generated GUI that brings visual clarity to Fate's internal workings
+# CODE MONKEY'S REMINDER: New widget, new frame!
+# Kill switch = mainloop()
+
+
 IFS_GUI = Tk()
 
 IFS_GUI.title("Internal Fate System")
@@ -848,11 +854,11 @@ expand_frame = Frame(skill_frame)
 
 def expand_page():
 
-    for widget in expand_frame.winfo_children():        # composes a list of all the widgets in the called frame
-        widget.destroy()
+    for widget in expand_frame.winfo_children():    # calls a list of all the existing widgets in the frame
+        widget.destroy()                            # in order to clear them out for new widgets to populate
 
     svariable = StringVar()
-    svariable.set("Select a Skill")  # sets the default value of the option menu
+    svariable.set("Select a Skill")     # sets the default value of the option menu
 
     cvariable = StringVar()
     cvariable.set("Select a PC")
@@ -965,8 +971,10 @@ def expand_page():
         pc = get_pc()
         skill = get_skill()
         diff = get_diff()
+
         result = skill_challenge(pc, skill, diff)
-        message = result[4]
+        message = result[4]     # grabs the string to be presented at the bottom of the card
+
         rvariable.set(message)
         return result
 
