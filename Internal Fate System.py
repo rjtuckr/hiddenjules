@@ -1000,9 +1000,9 @@ def expand_page():
     skill_chall_label = Label(card_frame, text="Skill Challenge")
     skill_chall_label.grid(row=3, columnspan=3, pady=2)
 
-    photo = PhotoImage(file="RavenStealthSuccess2.gif")
+    photo = PhotoImage(file="TarotCard.png")
 
-    skill_chall_card = Label(card_frame, image=photo, width=240, height=300)
+    skill_chall_card = Label(card_frame, image=photo, width=370, height=300)
     skill_chall_card.photo = photo
     skill_chall_card.grid(row=4)
 
