@@ -1,5 +1,6 @@
 hiddenjules
-A coder's cove safehousing the early stages of the Internal Fate App.
+
+INTERNAL FATE APP Description: A coder's cove safehousing the early stages of the Internal Fate App.
 
 STEP NUMBER ONE: Figure out the mystery that are pulls and pull requests and branches (why are there so many branches?)
 
@@ -7,41 +8,7 @@ Most of the code within the files comes with notes to explain the reason behind 
 
 # ATTRIBUTES AND SKILLS
 
-Charisma (CH)
-Constitution (CON)
-Dexterity (DEX)
-Intelligence (INT)
-Luck (LCK)
-Speed (SPD)
-Strength (STR)
-Wisdom (WIS)
-
-Acrobatics (DEX)
-Athletics (STR)
-Block (SPD)
-Chemistry (INT)
-Control (WIS)
-Craft (INT)
-Destruction (WIS)
-Disguise (CHA)
-Engineering (INT)
-Enhancement (WIS)
-Enlightenment (CHA)
-Escape (DEX)
-Heavy Armor (CON)
-Interaction (CHA)
-Knowledge (INT)
-Light Armor (SPD)
-Medicine (WIS)
-Melee (STR)
-Perception (WIS)
-Ranged (DEX)
-Ride/Drive (DEX)
-Security (INT)
-Sense Motive (WIS)
-Sleight of Hand (DEX)
-Stealth (DEX)
-Survival (WIS)
+TL;DR -- Find under Bloodcraft.py
 
 
 # MAIN FUNCTIONS
@@ -66,8 +33,11 @@ Enemy or PC mull roll d20 die and compare it against the target's AC
 If the damage is >=, then roll the appropriate IDS die based on the enemy's attack power
 
 Improvised Damage System (IDS)
+
 High DMG - d8
+
 Med DMG - d6
+
 Low DMG - d4
 
 When calculating DMG, -2 if enemy/PC is partially covered
@@ -77,15 +47,19 @@ If the enemy/PC is completely concealed, -5 to DMG roll
 # TRANSLATING RPG SHEETS INTO NAMEDTUPLES 
 
 pc = namedtuple(list of values here)
+
 hp = 1.5 x pc[constitution] (score)
 
 light armor AC = 7 + pc[speed] (or pc[dexterity]) + pc[light_armor] (mod)
+
 heavy armor AC = 12 + pc[heavy_armor] + pc.constitution (mod)
 
 fortitude = 10 + pc[constitution] (mod)
+
 will = 10 + pc[wisdom] (mod)
 
 light armor reflex = 10 + pc[speed] (or pc[dexterity]) (mod)
+
 heavy armor reflex = 5 + pc[speed] (or pc[dexterity]) + (pc[heavy_armor] * .5) (mod)
 
 ap, or attack power, is d4 by default
