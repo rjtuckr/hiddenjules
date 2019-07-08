@@ -1,6 +1,8 @@
 hiddenjules
 
-INTERNAL FATE APP Description: A coder's cove safehousing the early stages of the Internal Fate App.
+# INTERNAL FATE APP Description
+
+A coder's cove safehousing the early stages of the Internal Fate App.
 
 STEP NUMBER ONE: Figure out the mystery that are pulls and pull requests and branches (why are there so many branches?)
 
