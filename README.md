@@ -78,7 +78,6 @@ Hard = 16
 
 Attributes
 -
-Attributes
 
 Charisma (CH)
 
