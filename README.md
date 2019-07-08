@@ -1,6 +1,8 @@
 hiddenjules
 
-# INTERNAL FATE APP Description
+# INTERNAL FATE APP 
+
+Description
 
 A coder's cove safehousing the early stages of the Internal Fate App.
 
