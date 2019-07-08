@@ -25,11 +25,13 @@ Regen System - Implement a manual hp regeneration (per round) based off PC's Con
 E.g. At the end of every round, Ho gains .5 hp points
 
 Medicine Skill - Roll a d20, if >= injured[fortitude], then roll for amount of hp healed
+
 Using the Medicine skill to heal yourself or another PC deals d4 for hp recovery, multiplied by the Medicine mod
 
 
 # Summoning the Improvised Damage System (IDS)
 Enemy or PC mull roll d20 die and compare it against the target's AC
+
 If the damage is >=, then roll the appropriate IDS die based on the enemy's attack power
 
 Improvised Damage System (IDS)
@@ -41,6 +43,7 @@ Med DMG - d6
 Low DMG - d4
 
 When calculating DMG, -2 if enemy/PC is partially covered
+
 If the enemy/PC is completely concealed, -5 to DMG roll
 
 
