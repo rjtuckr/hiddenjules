@@ -16,7 +16,7 @@ TL;DR -- Find under Bloodcraft.py
 # The Almighty Skill Challenge
 It determines the modifier by passing in the skill parameter which returns a fixed value based on
 the PC's attribute for that particular skill. (e.g. If your Dexterity is 20, then your modifier is 2.0)
-The modifier is then applied to a random 20-sided dice roll along with the PC's luck modifier and
+The modifier is then applied to a random 20-sided dice roll (aka randint) along with the PC's luck modifier and
 compared against the difficulty level. Pray the RNG gods are on your side!
 
 
