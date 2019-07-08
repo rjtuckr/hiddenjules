@@ -49,13 +49,16 @@ If the enemy/PC is completely concealed, -5 to DMG roll
 
 # TRANSLATING RPG SHEETS INTO NAMEDTUPLES 
 
+My app is inspired by RPG guidelines designed by Solipstry (https://www.solipstry.com/)
+
+
 pc = namedtuple(list of values here)
 
 hp = 1.5 x pc[constitution] (score)
 
 light armor AC = 7 + pc[speed] (or pc[dexterity]) + pc[light_armor] (mod)
 
-heavy armor AC = 12 + pc[heavy_armor] + pc.constitution (mod)
+heavy armor AC = 12 + pc[heavy_armor] + pc[constitution] (mod)
 
 fortitude = 10 + pc[constitution] (mod)
 
