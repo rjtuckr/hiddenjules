@@ -33,8 +33,6 @@ Enemy or PC must roll d20 die and compare it against the target's AC
 
 If the damage is >=, then roll the appropriate IDS die based on the enemy's attack power
 
-Improvised Damage System (IDS)
-
 High DMG - d8
 
 Med DMG - d6
