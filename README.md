@@ -20,7 +20,7 @@ The modifier is then applied to a random 20-sided dice roll (aka randint) along 
 compared against the difficulty level. Pray the RNG gods are on your side!
 
 
-# Yuri's Trauma Triage
+# The Heal Challenge
 Regen System - Implement a manual hp regeneration (per round) based off PC's Constitution modifier (soon TM)
 E.g. At the end of every round, Ho gains .5 hp points
 
@@ -29,7 +29,7 @@ Medicine Skill - Roll a d20, if >= injured[fortitude], then roll for amount of h
 Using the Medicine skill to heal yourself or another PC deals d4 for hp recovery, multiplied by the Medicine mod
 
 
-# Summoning the Improvised Damage System (IDS)
+# The Combat Challenge
 Enemy or PC must roll d20 die and compare it against the target's AC
 
 If the damage is >=, then roll the appropriate IDS die based on the enemy's attack power
