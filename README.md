@@ -2,13 +2,11 @@ hiddenjules
 
 # INTERNAL FATE APP 
 
-Description
-
 A coder's cove safehousing the early stages of the Internal Fate App.
 
 STEP NUMBER ONE: Figure out the mystery that are pulls and pull requests and branches (why are there so many branches?)
 
-Most of the code within the files comes with notes to explain the reason behind functions. But I'll word vomit the details here as well:
+Most of the code within the files comes with notes to explain the reason behind functions. But I'll place the details here as well:
 
 # ATTRIBUTES AND SKILLS
 
