@@ -1,6 +1,6 @@
 # The Internal Fate App 
 
-An RPG-inspired app that rolls the die of Fate for you. This was built as an app for writers participating in a campaign who didn't have the time to pursue a traditional tabletop RPG -- but it can be used by anyone who finds it useful. You select a PC, a skill, and a difficulty (ranging from Easy to Standard to Hard) and hope that Luck is in your favor!
+An RPG-inspired app that rolls the die of Fate for you. This was built as an app for writers participating in a campaign who didn't have the time to pursue a traditional tabletop RPG—but it can be used by anyone who finds it useful. You select a PC, a skill, and a difficulty (ranging from Easy to Standard to Hard) and hope that Luck is in your favor!
 
 STEP NUMBER ONE: Figure out the mystery that are pulls and pull requests and branches (why are there so many branches?)
 
