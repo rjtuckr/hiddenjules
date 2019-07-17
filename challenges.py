@@ -93,11 +93,6 @@ def skill_challenge(pc, skill, difficulty):
     # Success!
 
     if outcome >= difficulty:
-        p1 = str(pc[0])
-        p2 = " passed the "
-        p3 = skill
-        p4 = " check!"
-        message = p1 + p2 + p3 + p4
 
         # Calculates the chance of a lucky encounter
 
@@ -105,17 +100,13 @@ def skill_challenge(pc, skill, difficulty):
 
         if check_for_fluke != "Lucky":
             check_for_fluke = None
+            message = pc[0] + " passed the " + skill + " check!"
         else:
-            print("Lucky encounter!")
+            message = pc[0] + " passed the " + skill + " check!*"
 
     # Failure...
 
     elif outcome < difficulty:
-        p1 = str(pc[0])
-        p2 = " failed the "
-        p3 = skill
-        p4 = " check..."
-        message = p1 + p2 + p3 + p4
         diff = "Failed"
 
         # Calculates the chance of an unlucky encounter
@@ -124,8 +115,9 @@ def skill_challenge(pc, skill, difficulty):
 
         if check_for_fluke != "Unlucky":
             check_for_fluke = None
+            message = pc[0] + " failed the " + skill + " check..."
         else:
-            print("Unlucky encounter!")
+            message = pc[0] + " failed the " + skill + " check...*"
 
     else:
         print("Error.")
@@ -148,25 +140,27 @@ def heal_challenge(healer, injured):
     skill_check = randint(1, 25)
     healer_fortitude = int(healer[14] / 10)
     injured_hp = injured[1]
+    healers_luck = fluke_system()
 
     if skill_check >= injured[4]:
         additional_hp = randint(1, 4)
         hp_back = int(additional_hp) * int(healer_fortitude)
         new_injured_hp = hp_back + injured_hp
 
-        print(healer[0], "healed", injured[0], "for", hp_back, "HPs!")
-
-        return skill_check, new_injured_hp
+        if healers_luck == "Lucky":
+            message = healer[0], "healed", injured[0], "for", hp_back, "HPs!*"
+        else:
+            message = healer[0], "healed", injured[0], "for", hp_back, "HPs!"
 
     else:
-        healers_luck = fluke_system()
+        hp_back = None
+        new_injured_hp = None
         if healers_luck == "Unlucky":
-            print("Skill check failed! An unlucky encounter.")
-            return healers_luck
+            message = healer[0] + " failed to heal " + injured[0] + ".*"
         else:
-            print(healer[0], "failed the skill check!")
-            return None
+            message = healer[0] + " failed to heal " + injured[0] + "."
 
+    return hp_back, new_injured_hp, healers_luck, message
 
 # Summoning the Improvised Damage System (IDS)
 # Enemy or PC mull roll d20 die and compare it against the target's AC
