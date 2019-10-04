@@ -15,6 +15,7 @@ from collections import namedtuple
 # Athletics (STR)
 # Block (SPD)
 # Chemistry (INT)
+# Conviction (CHA)
 # Control (WIS)
 # Craft (INT)
 # Destruction (WIS)
@@ -72,7 +73,7 @@ fortitude = 4
 will = 5
 reflex = 6
 charisma = 7            # Disguise, Enlightenment, Interaction
-constitution = 8        # Heavy Armor
+constitution = 8        # Conviction, Heavy Armor
 dexterity = 9           # Acrobatics, Escape, Ranged, Ride, Sleight of Hand, Stealth
 intelligence = 10       # Chemistry, Craft, Engineering, Knowledge, Security, Sense Motive
 luck = 11
@@ -87,6 +88,7 @@ Mignon = Character("Mignon", 30, 12, 4, 12, 13, 13, 10, 20, 30, 20, 10, 20, 20, 
 Raven = Character("Raven", 15, 12, 4, 11, 12, 13, 20, 10, 30, 10, 20, 20, 30, 20)
 Sev = Character("Sev", 30, 11, 4, 12, 13, 12, 30, 20, 10, 20, 10, 20, 20, 30)
 Vampyrate = Enemy("Vampyrate", 15, 13, 4, 11, 11, 14, 15, 10, 40, 20, 30, 20, 10, 10)
+Plaguebourne_Pillager = Enemy("Pillager", 10, 11, 4, 12, 12, 12, 20, 20, 20, 20, 20, 20, 20, 20)
 
 # Skills
 disguise = "Disguise"
@@ -111,6 +113,7 @@ athletics = "Athletics"
 melee = "Melee"
 unarmed = "Unarmed"
 control = "Control"
+conviction = "Conviction"
 destruction = "Destruction"
 enhancement = "Enhancement"
 medicine = "Medicine"
