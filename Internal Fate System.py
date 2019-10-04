@@ -1,5 +1,4 @@
-from tggmainframe import *
-from wheeloffate import *
+from tggmainframe import tgg_mainframe
 
 
 # Written by Julie Tucker
@@ -10,10 +9,6 @@ from wheeloffate import *
 class RNG:
     def __init__(self):
         tgg_mainframe()
-
-        def wheeloffate():
-            wheel_of_fate()
-
 
 IFS = RNG
 IFS()

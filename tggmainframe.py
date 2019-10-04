@@ -1,4 +1,6 @@
-from challenges import *
+from skillchallenge import skill_challenge
+from dmgchallenge import dmg_challenge
+from healchallenge import heal_challenge
 from bloodcraft import *
 from tkinter import *
 
@@ -23,6 +25,7 @@ def tgg_mainframe():
     challenge_frame = Frame(title_frame)  # Challenge options frame
     hc_frame = Frame(title_frame)    # Heal Challenge frame
     sc_frame = Frame(title_frame)    # Skill Challenge frame
+    cc_frame = Frame(title_frame)    # Combat Challenge frame
 
     def get_pc(selected_pc):
         if selected_pc == "Ho":
@@ -33,6 +36,9 @@ def tgg_mainframe():
 
         elif selected_pc == "Mignon":   # Because the get method returns the result as a string, this
             selected_pc = Mignon        # if or statement acts to convert it back to a namedtuple
+
+        elif selected_pc == "Plagueborne Pillager":
+            selected_pc = Plaguebourne_Pillager
 
         elif selected_pc == "Raven":
             selected_pc = Raven
@@ -45,6 +51,7 @@ def tgg_mainframe():
 
         else:
             print("PC not found.")
+            selected_pc = None
 
         return selected_pc
 
@@ -57,6 +64,8 @@ def tgg_mainframe():
             selected_skill = block
         elif selected_skill == "Chemistry":
             selected_skill = chemistry
+        elif selected_skill == "Conviction":
+            selected_skill = conviction
         elif selected_skill == "Control":
             selected_skill = control
         elif selected_skill == "Craft":
@@ -130,6 +139,14 @@ def tgg_mainframe():
             widget.destroy()
             hc_frame.grid_forget()
 
+        for widget in cc_frame.winfo_children():
+            widget.destroy()
+            cc_frame.grid_forget()
+
+        for widget in sc_frame.winfo_children():
+            widget.destroy()
+            sc_frame.grid_forget()
+
         # Generates the Skill Challenge frame
 
         sc_frame.grid()
@@ -179,12 +196,12 @@ def tgg_mainframe():
         # The three drop down menus for the Skill Challenge: Skills, PCs, and Difficulty
 
         skill_dropdown = OptionMenu(sc_frame, skill_variable, "Acrobatics", "Athletics", "Block", "Chemistry",
-                                    "Control", "Craft", "Destruction", "Disguise", "Engineering", "Enhancement",
-                                    "Enlightenment", "Escape", "Heavy Armor", "Interaction", "Knowledge",
+                                    "Conviction", "Control", "Craft", "Destruction", "Disguise", "Engineering", 
+                                    "Enhancement", "Enlightenment", "Escape", "Heavy Armor", "Interaction", "Knowledge",
                                     "Light Armor", "Medicine", "Melee", "Perception", "Ranged", "Ride", "Security",
                                     "Sense Motive", "Sleight of Hand", "Stealth", "Survival", "Unarmed")
 
-        pc_dropdown = OptionMenu(sc_frame, pc_variable, "Ho", "Kinzin", "Mignon", "Raven", "Sev", "Vampyrate")
+        pc_dropdown = OptionMenu(sc_frame, pc_variable, "Ho", "Kinzin", "Mignon", "Raven", "Sev", "Vampyrate", "Plagueborne Pillager")
 
         diff_dropdown = OptionMenu(sc_frame, diff_variable, "Easy", "Standard", "Hard")
 
@@ -225,6 +242,14 @@ def tgg_mainframe():
         for widget in sc_frame.winfo_children():
             widget.destroy()
             sc_frame.grid_forget()
+
+        for widget in cc_frame.winfo_children():
+            widget.destroy()
+            cc_frame.grid_forget()
+
+        for widget in hc_frame.winfo_children():
+            widget.destroy()            # This method runs through any existing frames and destroys the 
+            hc_frame.grid_forget()      # widgets and its grid association without destroying the frame itself
 
         # Generates the Heal Challenge Frame
 
@@ -293,6 +318,104 @@ def tgg_mainframe():
         roll_die = Button(hc_card_frame, text="Roll the die!", command=hc_roll_the_die)
         roll_die.grid(row=6, columnspan=3, sticky='n', pady=4)
 
+    def combat_challenge_page():
+
+        for widget in sc_frame.winfo_children():
+            widget.destroy()
+            sc_frame.grid_forget()
+
+        for widget in hc_frame.winfo_children():
+            widget.destroy()
+            hc_frame.grid_forget()
+
+        for widget in cc_frame.winfo_children():
+            widget.destroy()
+            cc_frame.grid_forget()
+
+        cc_frame.grid()
+
+        enemy_variable = StringVar()
+        enemy_variable.set("Select Attacker")
+
+        target_variable = StringVar()
+        target_variable.set("Select Target")
+
+        skill_variable = StringVar()
+        skill_variable.set("Select Combat")
+
+        condition_variable = StringVar()
+        condition_variable.set("Select Condition")
+
+        cc_result_variable = StringVar()
+        cc_result_variable.set("Strike fast and true!")
+
+        def get_cc_target():
+            target_string = target_variable.get()
+            cc_target = get_pc(target_string)
+            return cc_target
+
+        def get_cc_enemy():
+            enemy_string = enemy_variable.get()
+            cc_enemy = get_pc(enemy_string)
+            return cc_enemy
+
+        def get_cc_skill():
+            skill_string = skill_variable.get()
+            cc_skill = get_skill(skill_string)
+            return cc_skill
+
+        def get_cc_condition():
+            cc_condition = condition_variable.get()
+            return cc_condition
+
+        def cc_roll_the_die():
+            cc_target = get_cc_target()
+            cc_enemy = get_cc_enemy()
+            cc_skill = get_cc_skill()
+            cc_condition = get_cc_condition()
+
+            cc_result = dmg_challenge(cc_target, cc_enemy, cc_skill, cc_condition)
+            gui_message = cc_result[3]
+
+            cc_result_variable.set(gui_message)
+            return cc_result
+
+        target_dropdown = OptionMenu(cc_frame, target_variable, "Ho", "Kinzin", "Mignon", "Raven", "Sev", "Vampyrate", "Plagueborne Pillager")
+        target_dropdown.grid(row=2, column=2)
+
+        enemy_dropdown = OptionMenu(cc_frame, enemy_variable, "Ho", "Kinzin", "Mignon", "Raven", "Sev", "Vampyrate", "Plagueborne Pillager")
+        enemy_dropdown.grid(row=2, column=1)
+
+        skill_dropdown = OptionMenu(cc_frame, skill_variable, "Conviction", "Destruction", "Melee", "Ranged", "Unarmed")
+        skill_dropdown.grid(row=3, column=1)
+
+        condition_dropdown = OptionMenu(cc_frame, condition_variable, "None", "Partial", "Concealed")
+        condition_dropdown.grid(row=3, column=2)
+
+        cc_card_frame = Frame(cc_frame)
+        cc_card_frame.grid(row=5, columnspan=5)
+
+        cc_label = Label(cc_card_frame, text="Combat Challenge")
+        cc_label.grid(row=4, columnspan=3, pady=3)
+
+        # The current template for the IFS tarot graphics
+
+        photo = PhotoImage(file="TarotCard.png")
+
+        skill_chall_card = Label(cc_card_frame, image=photo, width=370, height=300)
+        skill_chall_card.photo = photo
+        skill_chall_card.grid(row=6)
+
+        # The entry box that displays the outcome of the die roll
+
+        roll_result = Entry(cc_card_frame, width=37, state="readonly", textvariable=cc_result_variable)
+        roll_result.grid(row=7, pady=7)
+
+        # The "Roll the die!" button
+
+        roll_die = Button(cc_card_frame, text="Roll the die!", command=cc_roll_the_die)
+        roll_die.grid(row=8, columnspan=3, sticky='n', pady=4)
+
     # Generates the Challenge Buttons Frame
 
     challenge_frame.grid()
@@ -302,7 +425,7 @@ def tgg_mainframe():
 
     skill_challenge_button.grid(row=1, column=0)
 
-    dps_challenge_button = Radiobutton(challenge_frame, text="Combat Challenge", value=2, variable=challenge_var)
+    dps_challenge_button = Radiobutton(challenge_frame, text="Combat Challenge", value=2, variable=challenge_var, command=combat_challenge_page)
     dps_challenge_button.grid(row=1, column=1)
 
     heal_challenge_button = Radiobutton(challenge_frame, text="Heal Challenge", value=3, variable=challenge_var,
