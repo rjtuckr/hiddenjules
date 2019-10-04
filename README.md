@@ -29,7 +29,7 @@ Using the Medicine skill to heal yourself or another PC deals d4 for hp recovery
 
 The Combat Challenge
 -
-Enemy or PC must roll d20 die and compare it against the target's AC
+Enemy or PC must roll d20 die, add the appropriate skill modifier (e.g. melee, unarmed, etc.) and compare it against the target's AC
 
 If the damage is >=, then roll the appropriate IDS die based on the enemy's attack power
 
@@ -105,6 +105,8 @@ Athletics (STR)
 Block (SPD)
 
 Chemistry (INT)
+
+Conviction (CON)
 
 Control (WIS)
 
